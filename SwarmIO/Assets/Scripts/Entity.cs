@@ -9,8 +9,6 @@ public class Entity : MonoBehaviour
     public int movementSpeed;
 
 
-
-
     //Constructor
     public Entity(int health, int movementSpeed)
     {
@@ -19,15 +17,8 @@ public class Entity : MonoBehaviour
     }
 
 
-
-    //Update Method
-    private void Update()
-    {
-
-    }
-
     //Methods
-    public void damaged(int attPower)
+    public virtual void damaged(int attPower)
     {
         this.health -= attPower;
         if (this.health <= 0){
