@@ -7,12 +7,15 @@ public class PlayerController : Entity
 {
     public GameObject player;
     private Animator animator;
+    public int speed;
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
     {
+        
     }
     private void Start()
     {
         animator = player.GetComponent<Animator>();
+        movementSpeed = speed;
     }
 
     // Update is called once per frame
