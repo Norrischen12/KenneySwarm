@@ -32,6 +32,15 @@ public class Enemies : Entity
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Bullet currBullet = collision.gameObject.GetComponent<Bullet>();
+            this.damaged(currBullet.getBulletAtt());
+        }
+    }
+
 
 
 }
