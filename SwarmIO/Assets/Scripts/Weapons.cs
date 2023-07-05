@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapons : MonoBehaviour
 {
 
-    public int durability { get; set; }
+    public int durability;
 
 
     //Constructor
@@ -21,4 +21,17 @@ public class Weapons : MonoBehaviour
     }
 
 
+
+
+
+    //Getters Setters
+    public int getDurability()
+    {
+        return this.durability;
+    }
+
+    public void setDurability(int durability)
+    {
+        this.durability = durability;
+    }
 }

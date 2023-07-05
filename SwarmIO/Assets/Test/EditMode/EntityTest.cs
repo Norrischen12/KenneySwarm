@@ -15,5 +15,4 @@ public class NewTestScript
         Assert.AreEqual(test.getHealth(), 10);
         Assert.AreEqual(test.getMovementSpeed(), 2);
     }
-
 }

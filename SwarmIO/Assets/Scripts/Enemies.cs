@@ -2,42 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ally : Entity
+public class Enemies : Entity
 {
-    //Attributes
+    //Attribute
     public Transform player;
 
 
+
     //Constructor
-    public Ally(int health, int movementSpeed) : base(health, movementSpeed)
+   public Enemies(int health, int movementSpeed): base(health, movementSpeed)
     {
     }
 
-    private void Update()
-    {
-        follow();
-    }
+
 
     //Methods
-    public void follow()
+    private void Update()
+    {
+        this.tag = "Enemy";
+        pursuit();
+    }
+
+
+    public void pursuit()
     {
         Vector3 direction = player.position - transform.position;
         direction.Normalize();
-
         transform.Translate(direction * this.movementSpeed * Time.deltaTime);
     }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
-
-
-
-
-
 
 
 
