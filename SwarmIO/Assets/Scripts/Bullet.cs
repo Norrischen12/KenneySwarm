@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     private float speed;
     private Vector3 direction;
     private int bulletAtt;
-
     
     //Constructor
     public Bullet (int bulletAtt)
@@ -19,14 +18,14 @@ public class Bullet : MonoBehaviour
     //Methods
     void Start()
     {
-        //this.tag = "Bullet";
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hit;
+        this.tag = "Bullet";
+        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-        //if (Physics.Raycast(ray, out hit))
-        //{
-        //    direction = (hit.point - transform.position).normalized;
-        //}
+        if (Physics.Raycast(ray, out hit))
+        {
+            direction = (hit.point - transform.position).normalized;
+        }
     }
 
     void Update()
@@ -56,5 +55,15 @@ public class Bullet : MonoBehaviour
     public void setSpeed(float speed)
     {
         this.speed = speed;
+    }
+
+    public int getBulletAtt()
+    {
+        return this.bulletAtt;
+    }
+
+    public void setBulletAtt(int bulletAtt)
+    {
+        this.bulletAtt = bulletAtt;
     }
 }
