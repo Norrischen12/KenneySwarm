@@ -5,8 +5,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     //Attributes
-    public int health;
-    public int movementSpeed;
+    protected int health;
+    protected int movementSpeed;
 
 
     //Constructor
