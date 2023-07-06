@@ -14,7 +14,10 @@ public class Enemies : Entity
     {
     }
 
-
+    private void Start()
+    {
+        this.movementSpeed = 2;
+    }
 
     //Methods
     private void Update()
