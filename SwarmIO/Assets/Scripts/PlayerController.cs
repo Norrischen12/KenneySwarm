@@ -8,8 +8,6 @@ public class PlayerController : Entity
     public GameObject player;
     public GameObject rangeWeapon;
     public int speed;
-    public GameObject bulletPrefab;
-    public GameObject bulletPoint;
 
     private Animator animator;
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
@@ -27,10 +25,6 @@ public class PlayerController : Entity
     {
         PlayerMovement();
         RangeWeaponAim();
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
     }
     private void PlayerMovement()
     {
@@ -72,12 +66,5 @@ public class PlayerController : Entity
         Vector3 direction = mousePosition - rangeWeapon.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rangeWeapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
-    private void Fire()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, bulletPoint.transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().setBulletAtt(1);
-        bullet.GetComponent<Bullet>().setSpeed(5f);
-        bullet.GetComponent<Bullet>().setDirection(Camera.main.ScreenToWorldPoint(Input.mousePosition) - rangeWeapon.transform.position);
     }
 }
