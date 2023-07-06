@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
-    [SerializeField] private Camera mainCamera;
     public GameObject player;
     public GameObject rangeWeapon;
     public int speed;
@@ -46,10 +45,10 @@ public class PlayerController : Entity
     {
         if (moveHorizontal < 0)
         {
-            this.transform.localScale = new Vector3(-1, 1, 1);
+            player.transform.localScale = new Vector3(-1, 1, 1);
         } else if (moveHorizontal > 0)
         {
-            this.transform.localScale = new Vector3(1, 1, 1);
+            player.transform.localScale = new Vector3(1, 1, 1);
         }
     }
     private void PlayerWalk()
@@ -63,9 +62,9 @@ public class PlayerController : Entity
     private void RangeWeaponAim()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f;
+        mousePosition.z = 1f;
         Vector3 direction = mousePosition - rangeWeapon.transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rangeWeapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
