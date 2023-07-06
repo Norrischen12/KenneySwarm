@@ -8,24 +8,14 @@ public class Bullet : MonoBehaviour
     private float speed;
     private Vector3 direction;
     private int bulletAtt;
-    
+
+
     //Constructor
-    public Bullet (int bulletAtt)
-    {
-        
-    }
 
     //Methods
     void Start()
     {
-        this.tag = "Bullet";
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            direction = (hit.point - transform.position).normalized;
-        }
     }
 
     void Update()
@@ -41,9 +31,6 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-
 
 
     //Getters Setters
@@ -66,4 +53,16 @@ public class Bullet : MonoBehaviour
     {
         this.bulletAtt = bulletAtt;
     }
+
+    public Vector3 getDirection()
+    {
+        return this.direction;
+    }
+
+    public void setDirection(Vector3 direction)
+    {
+        this.direction = direction;
+    }
+
+    
 }
