@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
+    [SerializeField] private Camera mainCamera;
     public GameObject player;
-    private Animator animator;
+    public GameObject rangeWeapon;
     public int speed;
+
+    private Animator animator;
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
     {
         
@@ -22,6 +25,7 @@ public class PlayerController : Entity
     void Update()
     {
         PlayerMovement();
+        RangeWeaponAim();
     }
     private void PlayerMovement()
     {
@@ -55,5 +59,13 @@ public class PlayerController : Entity
     private void PlayerIdle()
     {
         animator.SetFloat("speed", 0);
+    }
+    private void RangeWeaponAim()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+        Vector3 direction = mousePosition - rangeWeapon.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x);
+        rangeWeapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
