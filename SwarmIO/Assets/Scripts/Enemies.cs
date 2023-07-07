@@ -31,6 +31,7 @@ public class Enemies : Entity
             if (player.IFrame == false)
             {
                 player.damaged(this.getDamage());
+                player.IFrame = true;
                 
             }
             
