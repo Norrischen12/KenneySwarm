@@ -9,6 +9,7 @@ public class PlayerController : Entity
     public GameObject bulletPoint;
     public UIManager uiManager;
     public int HP;
+    public bool IFrame;
 
     private Animator animator;
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
