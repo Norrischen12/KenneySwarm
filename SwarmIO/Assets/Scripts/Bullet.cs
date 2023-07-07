@@ -23,10 +23,10 @@ public class Bullet : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-
+    //destroy bullet when hit obstacle or enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }
