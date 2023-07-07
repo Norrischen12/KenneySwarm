@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : Entity
@@ -10,6 +7,8 @@ public class PlayerController : Entity
     public int speed;
     public GameObject bulletPrefab;
     public GameObject bulletPoint;
+    public UIManager uiManager;
+    public int HP;
 
     private Animator animator;
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
@@ -20,6 +19,7 @@ public class PlayerController : Entity
     {
         animator = player.GetComponent<Animator>();
         movementSpeed = speed;
+        setHealth(HP);
     }
 
     // Update is called once per frame
@@ -27,6 +27,7 @@ public class PlayerController : Entity
     {
         PlayerMovement();
         RangeWeaponAim();
+        updateHP();
         if (Input.GetMouseButtonDown(0))
         {
             Fire();
@@ -79,5 +80,9 @@ public class PlayerController : Entity
         bullet.GetComponent<Bullet>().setBulletAtt(1);
         bullet.GetComponent<Bullet>().setSpeed(5f);
         bullet.GetComponent<Bullet>().setDirection(Camera.main.ScreenToWorldPoint(Input.mousePosition) - rangeWeapon.transform.position);
+    }
+    private void updateHP()
+    {
+        uiManager.setHP(getHealth());
     }
 }
