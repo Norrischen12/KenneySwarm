@@ -6,42 +6,43 @@ public class Enemies : Entity
 {
     //Attribute
     public Transform player;
+    public int damage;
 
 
 
     //Constructor
-   public Enemies(int health, int movementSpeed): base(health, movementSpeed)
+    public Enemies(int health, int movementSpeed, int damage) : base(health, movementSpeed)
     {
-    }
-
-    private void Start()
-    {
-        this.movementSpeed = 2;
-    }
-
-    //Methods
-    private void Update()
-    {
-        this.tag = "Enemy";
-        pursuit();
+        this.damage = damage;
     }
 
 
-    public void pursuit()
-    {
-        Vector3 direction = player.position - transform.position;
-        direction.Normalize();
-        transform.Translate(direction * this.movementSpeed * Time.deltaTime);
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Bullet currBullet = collision.gameObject.GetComponent<Bullet>();
             this.damaged(currBullet.getBulletAtt());
         }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            player.damaged(this.getDamage());
+            print("I got hit!");
+        }
+    }
+
+
+    //Getters and Setters
+    public int getDamage()
+    {
+        return this.damage;
+    }
+
+    public void setDamage(int damage)
+    {
+        this.damage = damage;
     }
 
 

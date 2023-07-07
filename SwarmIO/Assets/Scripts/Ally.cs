@@ -23,7 +23,6 @@ public class Ally : Entity
     {
         Vector3 direction = player.position - transform.position;
         direction.Normalize();
-
         transform.Translate(direction * this.movementSpeed * Time.deltaTime);
     }
 
