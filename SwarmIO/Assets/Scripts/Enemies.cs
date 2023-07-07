@@ -28,8 +28,12 @@ public class Enemies : Entity
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.damaged(this.getDamage());
-            print("I got hit!");
+            if (player.IFrame == false)
+            {
+                player.damaged(this.getDamage());
+                
+            }
+            
         }
     }
 
