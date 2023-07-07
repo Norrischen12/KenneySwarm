@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : Entity
@@ -28,11 +29,12 @@ public class PlayerController : Entity
     {
         PlayerMovement();
         RangeWeaponAim();
-        updateHP();
+        UpdateHP();
         if (Input.GetMouseButtonDown(0))
         {
             Fire();
         }
+        StartCoroutine(ActivateIframe());
     }
     private void PlayerMovement()
     {
@@ -82,8 +84,16 @@ public class PlayerController : Entity
         bullet.GetComponent<Bullet>().setSpeed(5f);
         bullet.GetComponent<Bullet>().setDirection(Camera.main.ScreenToWorldPoint(Input.mousePosition) - rangeWeapon.transform.position);
     }
-    private void updateHP()
+    private void UpdateHP()
     {
         uiManager.setHP(getHealth());
+    }
+    private IEnumerator ActivateIframe()
+    {
+        if (IFrame)
+        {
+            yield return new WaitForSeconds(0.5f);
+            IFrame = false;
+        }
     }
 }
