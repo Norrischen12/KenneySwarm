@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : Enemies
+public class Bat : Enemies
 {
-    public Slime(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
+    public Bat(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
     }
@@ -12,7 +12,9 @@ public class Slime : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        this.damage = 5;
+        this.setDamage(2);
+        this.setMovementSpeed(7);
+        this.setHealth(5);
     }
 
     // Update is called once per frame
