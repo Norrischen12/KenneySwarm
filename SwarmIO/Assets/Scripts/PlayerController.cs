@@ -5,9 +5,11 @@ public class PlayerController : Entity
 {
     public GameObject player;
     public GameObject rangeWeapon;
-    public int speed;
+    public int moveSpeed;
+    public int bulletSpeed;
     public GameObject bulletPrefab;
     public GameObject bulletPoint;
+    public GameObject aim;
     public UIManager uiManager;
     public int HP;
     public bool IFrame;
@@ -20,7 +22,7 @@ public class PlayerController : Entity
     private void Start()
     {
         animator = player.GetComponent<Animator>();
-        movementSpeed = speed;
+        movementSpeed = moveSpeed;
         setHealth(HP);
     }
 
@@ -81,8 +83,9 @@ public class PlayerController : Entity
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletPoint.transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().setBulletAtt(1);
-        bullet.GetComponent<Bullet>().setSpeed(5f);
-        bullet.GetComponent<Bullet>().setDirection(Camera.main.ScreenToWorldPoint(Input.mousePosition) - rangeWeapon.transform.position);
+        bullet.GetComponent<Bullet>().setSpeed(bulletSpeed);
+        Vector3 direction = aim.transform.position - bulletPoint.transform.position;
+        bullet.GetComponent<Bullet>().setDirection(direction);
     }
     private void UpdateHP()
     {
