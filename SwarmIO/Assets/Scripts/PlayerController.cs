@@ -3,18 +3,27 @@ using UnityEngine;
 
 public class PlayerController : Entity
 {
+    [Header("Reference")]
     public GameObject player;
     public GameObject rangeWeapon;
-    public int moveSpeed;
-    public int bulletSpeed;
     public GameObject bulletPrefab;
     public GameObject bulletPoint;
     public GameObject aim;
+    public GameObject gun;
+    public GameObject boomerangPrefab;
     public UIManager uiManager;
+    [Header("Status")]
+    public float attkSpeed;
+    public float moveSpeed;
+    public float bulletSpeed;
     public int HP;
+    [Header("Abilities")]
     public bool IFrame;
+    public bool Gun;
+    public bool Boomerang;
 
     private Animator animator;
+    public bool canShoot = true;
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
     {
         
@@ -25,18 +34,21 @@ public class PlayerController : Entity
         movementSpeed = moveSpeed;
         setHealth(HP);
     }
-
-    // Update is called once per frame
     void Update()
     {
         PlayerMovement();
         RangeWeaponAim();
         UpdateHP();
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
         StartCoroutine(ActivateIframe());
+        if (canShoot && Gun && Input.GetMouseButtonDown(0))
+        {
+            GunFire();
+            StartCoroutine(ShootCD());
+        }
+        else if (canShoot && Boomerang && Input.GetMouseButtonDown(0))
+        {
+            BoomerangFire();
+        }
     }
     private void PlayerMovement()
     {
@@ -79,13 +91,22 @@ public class PlayerController : Entity
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rangeWeapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-    private void Fire()
+    private void GunFire()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletPoint.transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().setBulletAtt(1);
         bullet.GetComponent<Bullet>().setSpeed(bulletSpeed);
         Vector3 direction = aim.transform.position - bulletPoint.transform.position;
         bullet.GetComponent<Bullet>().setDirection(direction);
+    }
+    private void BoomerangFire()
+    {
+        GameObject boomerang = Instantiate(boomerangPrefab, bulletPoint.transform.position, Quaternion.identity);
+        Vector3 direction = aim.transform.position - boomerang.transform.position;
+        boomerang.GetComponent<Boomerang>().setDirection(direction);
+        boomerang.GetComponent<Boomerang>().setBulletAtt(1);
+        boomerang.GetComponent<Boomerang>().setSpeed(bulletSpeed);
+        boomerang.layer = LayerMask.NameToLayer("Boomerang");
     }
     private void UpdateHP()
     {
@@ -98,5 +119,29 @@ public class PlayerController : Entity
             yield return new WaitForSeconds(0.5f);
             IFrame = false;
         }
+    }
+    private void ActivateGun()
+    {
+        Gun = true;
+        gun.SetActive(Gun);
+    }
+    private void DeactivateGun()
+    {
+        Gun = false;
+        gun.SetActive(Gun);
+    }
+    private void ActivateBoomerang()
+    {
+        Boomerang = true;
+    }
+    private void DeactivateBoomerang()
+    {
+        Boomerang = false;
+    }
+    private IEnumerator ShootCD()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(attkSpeed);
+        canShoot = true;
     }
 }

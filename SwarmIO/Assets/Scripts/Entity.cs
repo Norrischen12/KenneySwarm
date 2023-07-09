@@ -6,11 +6,11 @@ public class Entity : MonoBehaviour
 {
     //Attributes
     protected int health;
-    protected int movementSpeed;
+    protected float movementSpeed;
 
 
     //Constructor
-    public Entity(int health, int movementSpeed)
+    public Entity(int health, float movementSpeed)
     {
         this.health = health;
         this.movementSpeed = movementSpeed;
@@ -45,12 +45,12 @@ public class Entity : MonoBehaviour
         this.health = health;
     }
 
-    public int getMovementSpeed()
+    public float getMovementSpeed()
     {
         return this.movementSpeed;
     }
 
-    public void setMovementSpeed(int movementSpeed)
+    public void setMovementSpeed(float movementSpeed)
     {
         this.movementSpeed = movementSpeed;
     }

@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 274000472}
   - component: {fileID: 274000473}
   - component: {fileID: 274000474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MainCharactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,8 +805,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 675470613}
-  m_Layer: 0
-  m_Name: bulletPoint
+  m_Layer: 9
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -819,13 +819,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675470612}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.193, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1385483755}
-  m_RootOrder: 1
+  m_Father: {fileID: 1599814500}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747032622
 GameObject:
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 750640547}
   - component: {fileID: 750640550}
   - component: {fileID: 750640549}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -928,13 +928,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 274000471}
   rangeWeapon: {fileID: 1385483754}
-  moveSpeed: 5
-  bulletSpeed: 1
   bulletPrefab: {fileID: 5245504383197012917, guid: e62b9c5e3a95a9f43bedcd5d4184c315, type: 3}
   bulletPoint: {fileID: 675470612}
+  aim: {fileID: 1564326348}
+  gun: {fileID: 1599814499}
+  boomerangPrefab: {fileID: 4303796938436555704, guid: d1afe2d4bb7e15e45ab5ded3abc3cf72, type: 3}
   uiManager: {fileID: 1748117205}
+  attkSpeed: 0.2
+  moveSpeed: 3
+  bulletSpeed: 5
   HP: 10
   IFrame: 0
+  Gun: 0
+  Boomerang: 1
+  canShoot: 1
 --- !u!4 &750640548
 Transform:
   m_ObjectHideFlags: 0
@@ -1206,7 +1213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1385483755}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RangeWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1233,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1599814500}
-  - {fileID: 675470613}
   - {fileID: 1564326349}
   m_Father: {fileID: 750640548}
   m_RootOrder: 1
@@ -1241,7 +1247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564326349}
   - component: {fileID: 1564326350}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,13 +1261,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564326348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.147, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
+  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1385483755}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1564326350
 SpriteRenderer:
@@ -1325,7 +1331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1599814500}
   - component: {fileID: 1599814501}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1341,9 +1347,10 @@ Transform:
   m_GameObject: {fileID: 1599814499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.845, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 675470613}
   m_Father: {fileID: 1385483755}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1388,7 +1395,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1948,7 +1955,7 @@ GameObject:
   - component: {fileID: 1949798616}
   - component: {fileID: 1949798615}
   - component: {fileID: 1949798614}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacles
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

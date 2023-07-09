@@ -5,19 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     //Attributes
-    private GameObject player;
     private float speed;
     private Vector3 direction;
     private int bulletAtt;
     private Rigidbody2D rb;
-    private int bounceCount = 0;
-    private Vector2 returnDirection;
 
     public bool normal;
     public bool bounce;
     public int maxBounce;
     public bool pierce;
     public bool statikkShiv;
+    
 
 
     //Constructor
@@ -25,37 +23,22 @@ public class Bullet : MonoBehaviour
     //Methods
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = direction * speed;
-
-        //Destroy(gameObject, 0.5f);
-    }
-
-    void Update()
-    {
-        if (bounce && bounceCount == 1)
-        {
-            bouncingAbility();
-        }
     }
 
     //destroy bullet when hit obstacle or enemy
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (normal)
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
         {
-            normalAbility(collision);
-        }
-        else if (bounce)
-        {
-            bounceCount++;
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
+
+
+
+
 
 
     //Getters Setters
@@ -88,24 +71,6 @@ public class Bullet : MonoBehaviour
     {
         this.direction = direction;
     }
-    private void normalAbility(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void bouncingAbility()
-    {
-        returnDirection = (player.transform.position - transform.position).normalized;
-        if (bounceCount >= maxBounce)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Vector2 reflectionDirection = returnDirection;
-        rb.velocity = reflectionDirection * speed;
-        
-    }
+
     
 }
