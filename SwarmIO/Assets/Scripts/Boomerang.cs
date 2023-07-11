@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Boomerang : MonoBehaviour
@@ -7,25 +8,37 @@ public class Boomerang : MonoBehaviour
     private Vector3 direction;
     private float speed;
     private int bulletAtt;
-    private bool canReturnBoomerang;
+    public bool canReturnBoomerang;
+
+    public float flyTime;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         rb = this.GetComponent<Rigidbody2D>();
         rb.AddForce(direction * speed, ForceMode2D.Impulse);
+        player.GetComponent<PlayerController>().canShoot = false;
+        StartCoroutine(flyTimeCounting());
+    }
+    private IEnumerator flyTimeCounting()
+    {
+        yield return new WaitForSeconds(flyTime);
+        gameObject.layer = LayerMask.NameToLayer("Weapon");
+        canReturnBoomerang = true;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        /*
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameObject.layer = LayerMask.NameToLayer("Weapon");
             canReturnBoomerang = true;
-            player.GetComponent<PlayerController>().canShoot = false;
         }
+        */
     }
     private void Update()
     {
+        transform.Rotate(new Vector3(0, 0, 720f) * Time.deltaTime);
         if (canReturnBoomerang)
         {
             returnBoomerang();
@@ -33,7 +46,9 @@ public class Boomerang : MonoBehaviour
     }
     private void returnBoomerang()
     {
+
         Vector2 returnDirection = (player.transform.position - transform.position).normalized;
+        //rb.AddForce(returnDirection * speed, ForceMode2D.Impulse);
         rb.velocity = returnDirection * speed;
         if (Vector3.Distance(transform.position, player.transform.position) < 0.2f)
         {
