@@ -533,7 +533,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &274000474
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -550,8 +550,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &279061528
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,11 +936,13 @@ MonoBehaviour:
   uiManager: {fileID: 1748117205}
   attkSpeed: 0.2
   moveSpeed: 3
+  bulletAttk: 1
   bulletSpeed: 5
+  boomerangAttk: 2
   HP: 10
   IFrame: 0
-  Gun: 0
-  Boomerang: 1
+  Gun: 1
+  Boomerang: 0
   canShoot: 1
 --- !u!4 &750640548
 Transform:
