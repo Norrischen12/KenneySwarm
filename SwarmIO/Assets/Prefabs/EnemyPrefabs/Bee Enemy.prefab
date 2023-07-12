@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 400
-  nextWaypointDistance: 3
+  nextWaypointDistance: 2
   enemyGFX: {fileID: 8820842033112350007}
 --- !u!114 &6665307593861016452
 MonoBehaviour:

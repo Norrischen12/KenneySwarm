@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Barnacle : Enemies
 {
+
+    public int barnacleHealth;
+    public int barnacleDamage;
+    public int barnacleMovementSpeed;
+
     public Barnacle(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
@@ -12,9 +17,9 @@ public class Barnacle : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        this.setDamage(3);
-        this.setMovementSpeed(3);
-        this.setHealth(10);
+        this.setDamage(barnacleDamage);
+        this.setMovementSpeed(barnacleMovementSpeed);
+        this.setHealth(barnacleHealth);
     }
 
     // Update is called once per frame

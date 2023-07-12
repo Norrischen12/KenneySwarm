@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Slime : Enemies
 {
+    public int slimeHealth;
+    public int slimeDamage;
+    public int slimeMovementSpeed;
     public Slime(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
@@ -12,9 +15,9 @@ public class Slime : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        this.setDamage(4);
-        this.setMovementSpeed(5);
-        this.setHealth(10);
+        this.setDamage(slimeDamage);
+        this.setMovementSpeed(slimeMovementSpeed);
+        this.setHealth(slimeHealth);
     }
 
     // Update is called once per frame

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bee : Enemies
 {
+    public int beeHealth;
+    public int beeDamage;
+    public int beeMovementSpeed;
+
     public Bee(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
@@ -12,9 +16,9 @@ public class Bee : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        this.setDamage(1);
-        this.setMovementSpeed(8);
-        this.setHealth(4);
+        this.setDamage(beeDamage);
+        this.setMovementSpeed(beeMovementSpeed);
+        this.setHealth(beeHealth);
     }
 
     // Update is called once per frame

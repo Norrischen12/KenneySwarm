@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Bat : Enemies
 {
+    public int batHealth;
+    public int batDamage;
+    public int batMovementSpeed;
+
+
     public Bat(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
@@ -12,9 +17,9 @@ public class Bat : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        this.setDamage(2);
-        this.setMovementSpeed(7);
-        this.setHealth(5);
+        this.setDamage(batDamage);
+        this.setMovementSpeed(batMovementSpeed);
+        this.setHealth(batHealth);
     }
 
     // Update is called once per frame

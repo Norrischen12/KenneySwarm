@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Ghost : Enemies
 {
+    public int ghostHealth;
+    public int ghostDamage;
+    public int ghostMovementSpeed;
+
     public Ghost(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
@@ -12,9 +16,9 @@ public class Ghost : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        this.setDamage(5);
-        this.setMovementSpeed(3);
-        this.setHealth(15);
+        this.setDamage(ghostDamage);
+        this.setMovementSpeed(ghostMovementSpeed);
+        this.setHealth(ghostHealth);
     }
 
     // Update is called once per frame
