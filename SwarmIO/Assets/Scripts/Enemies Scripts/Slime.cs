@@ -7,6 +7,8 @@ public class Slime : Enemies
     public int slimeHealth;
     public int slimeDamage;
     public int slimeMovementSpeed;
+    [SerializeField]
+    public GameObject HPPivot;
     public Slime(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
 
@@ -18,11 +20,14 @@ public class Slime : Enemies
         this.setDamage(slimeDamage);
         this.setMovementSpeed(slimeMovementSpeed);
         this.setHealth(slimeHealth);
+        this.setOriginalHP(slimeHealth);
+        this.setHPPivot(HPPivot);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float scaleX = this.getHPScaleX();
+        HPPivot.transform.localScale = new Vector3(scaleX, 1, 1);
     }
 }

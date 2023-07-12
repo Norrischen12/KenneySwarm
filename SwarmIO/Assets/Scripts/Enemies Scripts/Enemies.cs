@@ -7,6 +7,9 @@ public class Enemies : Entity
     //Attribute
     public Transform player;
     public int damage;
+    private int originalHP;
+    private GameObject HPPivot_obj;
+    private float HPScaleX;
 
 
 
@@ -23,6 +26,8 @@ public class Enemies : Entity
         {
             Bullet currBullet = collision.gameObject.GetComponent<Bullet>();
             this.damaged(currBullet.getBulletAtt());
+            HPScaleX = calculateHPPivot();
+
         }
 
         if (collision.gameObject.CompareTag("Player"))
@@ -49,7 +54,22 @@ public class Enemies : Entity
     {
         this.damage = damage;
     }
-
-
+    public void setOriginalHP(int HP)
+    {
+        originalHP = HP;
+        HPScaleX = calculateHPPivot();
+    }
+    private float calculateHPPivot()
+    {
+        return (float)this.getHealth() / originalHP;
+    }
+    public void setHPPivot(GameObject pivot)
+    {
+        HPPivot_obj = pivot;
+    }
+    public float getHPScaleX()
+    {
+        return HPScaleX;
+    }
 
 }

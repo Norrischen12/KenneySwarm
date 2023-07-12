@@ -15,7 +15,9 @@ public class PlayerController : Entity
     [Header("Status")]
     public float attkSpeed;
     public float moveSpeed;
+    public int bulletAttk;
     public float bulletSpeed;
+    public int boomerangAttk;
     public int HP;
     [Header("Abilities")]
     public bool IFrame;
@@ -94,7 +96,7 @@ public class PlayerController : Entity
     private void GunFire()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletPoint.transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().setBulletAtt(1);
+        bullet.GetComponent<Bullet>().setBulletAtt(bulletAttk);
         bullet.GetComponent<Bullet>().setSpeed(bulletSpeed);
         Vector3 direction = aim.transform.position - bulletPoint.transform.position;
         bullet.GetComponent<Bullet>().setDirection(direction);
@@ -104,7 +106,7 @@ public class PlayerController : Entity
         GameObject boomerang = Instantiate(boomerangPrefab, bulletPoint.transform.position, Quaternion.identity);
         Vector3 direction = aim.transform.position - boomerang.transform.position;
         boomerang.GetComponent<Boomerang>().setDirection(direction);
-        boomerang.GetComponent<Boomerang>().setBulletAtt(1);
+        boomerang.GetComponent<Boomerang>().setBulletAtt(boomerangAttk);
         boomerang.GetComponent<Boomerang>().setSpeed(bulletSpeed);
         boomerang.layer = LayerMask.NameToLayer("Boomerang");
     }

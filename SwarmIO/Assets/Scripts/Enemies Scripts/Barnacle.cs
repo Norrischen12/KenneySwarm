@@ -8,6 +8,8 @@ public class Barnacle : Enemies
     public int barnacleHealth;
     public int barnacleDamage;
     public int barnacleMovementSpeed;
+    [SerializeField]
+    public GameObject HPPivot;
 
     public Barnacle(int health, int movementSpeed, int damage) : base(health, movementSpeed, damage)
     {
@@ -20,11 +22,12 @@ public class Barnacle : Enemies
         this.setDamage(barnacleDamage);
         this.setMovementSpeed(barnacleMovementSpeed);
         this.setHealth(barnacleHealth);
+        this.setOriginalHP(barnacleHealth);
+        this.setHPPivot(HPPivot);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float scaleX = this.getHPScaleX();
+        HPPivot.transform.localScale = new Vector3(scaleX, 1, 1);
     }
 }
