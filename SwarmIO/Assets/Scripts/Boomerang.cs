@@ -38,7 +38,7 @@ public class Boomerang : MonoBehaviour
     }
     private void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 720f) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 0, 720f * 2) * Time.deltaTime);
         if (canReturnBoomerang)
         {
             returnBoomerang();
@@ -50,7 +50,7 @@ public class Boomerang : MonoBehaviour
         Vector2 returnDirection = (player.transform.position - transform.position).normalized;
         //rb.AddForce(returnDirection * speed, ForceMode2D.Impulse);
         rb.velocity = returnDirection * speed;
-        if (Vector3.Distance(transform.position, player.transform.position) < 0.2f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 0.4f)
         {
             canReturnBoomerang = false;
             player.GetComponent<PlayerController>().canShoot = true;

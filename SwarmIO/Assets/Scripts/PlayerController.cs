@@ -18,6 +18,7 @@ public class PlayerController : Entity
     public int bulletAttk;
     public float bulletSpeed;
     public int boomerangAttk;
+    public float boomerangSpeed;
     public int HP;
     [Header("Abilities")]
     public bool IFrame;
@@ -107,7 +108,7 @@ public class PlayerController : Entity
         Vector3 direction = aim.transform.position - boomerang.transform.position;
         boomerang.GetComponent<Boomerang>().setDirection(direction);
         boomerang.GetComponent<Boomerang>().setBulletAtt(boomerangAttk);
-        boomerang.GetComponent<Boomerang>().setSpeed(bulletSpeed);
+        boomerang.GetComponent<Boomerang>().setSpeed(boomerangSpeed);
         boomerang.layer = LayerMask.NameToLayer("Boomerang");
     }
     private void UpdateHP()

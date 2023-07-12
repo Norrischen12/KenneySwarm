@@ -41,6 +41,12 @@ public class Enemies : Entity
             }
             
         }
+        if (collision.gameObject.CompareTag("Boomerang"))
+        {
+            Boomerang curr = collision.gameObject.GetComponent<Boomerang>();
+            this.damaged(curr.getBulletAtt());
+            HPScaleX = calculateHPPivot();
+        }
     }
 
 
