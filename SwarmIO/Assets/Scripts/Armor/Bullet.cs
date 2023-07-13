@@ -10,13 +10,6 @@ public class Bullet : MonoBehaviour
     private int bulletAtt;
     private Rigidbody2D rb;
 
-    public bool normal;
-    public bool bounce;
-    public int maxBounce;
-    public bool pierce;
-    public bool statikkShiv;
-    
-
 
     //Constructor
 

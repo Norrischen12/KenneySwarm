@@ -933,6 +933,7 @@ MonoBehaviour:
   aim: {fileID: 1564326348}
   gun: {fileID: 1599814499}
   boomerangPrefab: {fileID: 4303796938436555704, guid: d1afe2d4bb7e15e45ab5ded3abc3cf72, type: 3}
+  sniperPrefab: {fileID: 5245504383197012917, guid: e4399229597dbc549a1544d2363e1fa5, type: 3}
   uiManager: {fileID: 1748117205}
   attkSpeed: 0.2
   moveSpeed: 3
@@ -940,11 +941,15 @@ MonoBehaviour:
   bulletSpeed: 5
   boomerangAttk: 2
   boomerangSpeed: 25
+  sniperAttk: 10
+  sniperSpeed: 200
   HP: 10
   IFrame: 0
   Gun: 0
-  Boomerang: 1
+  Boomerang: 0
+  Sniper: 1
   canShoot: 1
+  canExtendCamera: 0
 --- !u!4 &750640548
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,6 +1115,7 @@ GameObject:
   - component: {fileID: 1212554940}
   - component: {fileID: 1212554939}
   - component: {fileID: 1212554938}
+  - component: {fileID: 1212554941}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1183,6 +1189,26 @@ Transform:
   m_Father: {fileID: 553027217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1212554941
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212554937}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c19fda8bf9b0c94fa219d3b7afd4efb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1295968627
 GameObject:
   m_ObjectHideFlags: 0
