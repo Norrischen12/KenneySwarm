@@ -24,6 +24,7 @@ public class PlayerController : Entity
     public float sniperAttkSpeed;
     public float sniperSpeed;
     public int HP;
+    public int MN;
     [Header("Abilities")]
     public bool IFrame;
     public bool Gun;
@@ -33,6 +34,7 @@ public class PlayerController : Entity
 
     private Animator animator;
     private Animator cameraAnimator;
+    private bool canDash;
     
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
     {
@@ -52,6 +54,7 @@ public class PlayerController : Entity
         UpdateHP();
         StartCoroutine(ActivateIframe());
         CameraExtension();
+        CheckCanDash();
         if (canShoot && Gun && Input.GetMouseButtonDown(0))
         {
             GunFire();
@@ -65,6 +68,10 @@ public class PlayerController : Entity
         {
             SniperFire();
             StartCoroutine(ShootCD(sniperAttkSpeed));
+        }
+        if (canDash && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StartCoroutine(PlayerDash());
         }
     }
     private void PlayerMovement()
@@ -180,5 +187,25 @@ public class PlayerController : Entity
         canShoot = false;
         yield return new WaitForSeconds(time);
         canShoot = true;
+    }
+    private IEnumerator PlayerDash()
+    {
+        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(player.transform.localScale.x * 25f, 0f);
+        yield return new WaitForSeconds(1f);
+        rb.gravityScale = originalGravity;
+    }
+    private void CheckCanDash()
+    {
+        if (MN >= 5)
+        {
+            canDash = true;
+        } 
+        else
+        {
+            canDash = false;
+        }
     }
 }

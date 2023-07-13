@@ -935,13 +935,14 @@ MonoBehaviour:
   boomerangPrefab: {fileID: 4303796938436555704, guid: d1afe2d4bb7e15e45ab5ded3abc3cf72, type: 3}
   sniperPrefab: {fileID: 5245504383197012917, guid: e4399229597dbc549a1544d2363e1fa5, type: 3}
   uiManager: {fileID: 1748117205}
-  attkSpeed: 0.2
+  bulletAttkSpeed: 0.2
   moveSpeed: 3
   bulletAttk: 1
   bulletSpeed: 5
   boomerangAttk: 2
   boomerangSpeed: 25
-  sniperAttk: 10
+  sniperAttk: 5
+  sniperAttkSpeed: 1.5
   sniperSpeed: 200
   HP: 10
   IFrame: 0
@@ -949,7 +950,6 @@ MonoBehaviour:
   Boomerang: 0
   Sniper: 1
   canShoot: 1
-  canExtendCamera: 0
 --- !u!4 &750640548
 Transform:
   m_ObjectHideFlags: 0
