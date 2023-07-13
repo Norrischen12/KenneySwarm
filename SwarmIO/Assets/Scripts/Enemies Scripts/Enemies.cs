@@ -19,15 +19,6 @@ public class Enemies : Entity
         this.damage = damage;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Sniper"))
-        {
-            Sniper curr = collision.gameObject.GetComponent<Sniper>();
-            this.damaged(curr.getBulletAtt());
-            HPScaleX = calculateHPPivot();
-        }
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -56,7 +47,6 @@ public class Enemies : Entity
             this.damaged(curr.getBulletAtt());
             HPScaleX = calculateHPPivot();
         }
-
     }
 
 
