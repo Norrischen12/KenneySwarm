@@ -11,22 +11,29 @@ public class PlayerController : Entity
     public GameObject aim;
     public GameObject gun;
     public GameObject boomerangPrefab;
+    public GameObject sniperPrefab;
     public UIManager uiManager;
     [Header("Status")]
-    public float attkSpeed;
+    public float bulletAttkSpeed;
     public float moveSpeed;
     public int bulletAttk;
     public float bulletSpeed;
     public int boomerangAttk;
     public float boomerangSpeed;
+    public int sniperAttk;
+    public float sniperAttkSpeed;
+    public float sniperSpeed;
     public int HP;
     [Header("Abilities")]
     public bool IFrame;
     public bool Gun;
     public bool Boomerang;
+    public bool Sniper;
+    public bool canShoot = true;
 
     private Animator animator;
-    public bool canShoot = true;
+    private Animator cameraAnimator;
+    
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
     {
         
@@ -34,6 +41,7 @@ public class PlayerController : Entity
     private void Start()
     {
         animator = player.GetComponent<Animator>();
+        cameraAnimator = Camera.main.GetComponent<Animator>();
         movementSpeed = moveSpeed;
         setHealth(HP);
     }
@@ -43,14 +51,20 @@ public class PlayerController : Entity
         RangeWeaponAim();
         UpdateHP();
         StartCoroutine(ActivateIframe());
+        CameraExtension();
         if (canShoot && Gun && Input.GetMouseButtonDown(0))
         {
             GunFire();
-            StartCoroutine(ShootCD());
+            StartCoroutine(ShootCD(bulletAttkSpeed));
         }
         else if (canShoot && Boomerang && Input.GetMouseButtonDown(0))
         {
             BoomerangFire();
+        }
+        else if (canShoot && Sniper && Input.GetMouseButtonDown(0))
+        {
+            SniperFire();
+            StartCoroutine(ShootCD(sniperAttkSpeed));
         }
     }
     private void PlayerMovement()
@@ -111,6 +125,26 @@ public class PlayerController : Entity
         boomerang.GetComponent<Boomerang>().setSpeed(boomerangSpeed);
         boomerang.layer = LayerMask.NameToLayer("Boomerang");
     }
+    private void SniperFire()
+    {
+        GameObject sniper = Instantiate(sniperPrefab, bulletPoint.transform.position, Quaternion.identity);
+        Vector3 direction = aim.transform.position - sniper.transform.position;
+        sniper.GetComponent<Sniper>().setDirection(direction);
+        sniper.GetComponent<Sniper>().setBulletAtt(sniperAttk);
+        sniper.GetComponent<Sniper>().setSpeed(sniperSpeed);
+    }
+
+    private void CameraExtension ()
+    {
+        if (Sniper)
+        {
+            cameraAnimator.SetBool("canExtendCamera", true);
+        }
+        else if (!Sniper)
+        {
+            cameraAnimator.SetBool("canExtendCamera", false);
+        }
+    }
     private void UpdateHP()
     {
         uiManager.setHP(getHealth());
@@ -141,10 +175,10 @@ public class PlayerController : Entity
     {
         Boomerang = false;
     }
-    private IEnumerator ShootCD()
+    private IEnumerator ShootCD(float time)
     {
         canShoot = false;
-        yield return new WaitForSeconds(attkSpeed);
+        yield return new WaitForSeconds(time);
         canShoot = true;
     }
 }
