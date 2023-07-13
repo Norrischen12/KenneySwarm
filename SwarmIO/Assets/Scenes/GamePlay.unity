@@ -812,7 +812,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1056,13 +1056,14 @@ MonoBehaviour:
   boomerangPrefab: {fileID: 4303796938436555704, guid: d1afe2d4bb7e15e45ab5ded3abc3cf72, type: 3}
   sniperPrefab: {fileID: 5245504383197012917, guid: e4399229597dbc549a1544d2363e1fa5, type: 3}
   uiManager: {fileID: 1748117205}
-  attkSpeed: 0.2
+  bulletAttkSpeed: 0.2
   moveSpeed: 3
   bulletAttk: 1
   bulletSpeed: 5
   boomerangAttk: 2
   boomerangSpeed: 25
   sniperAttk: 10
+  sniperAttkSpeed: 2
   sniperSpeed: 200
   HP: 10
   IFrame: 0
@@ -1070,7 +1071,6 @@ MonoBehaviour:
   Boomerang: 0
   Sniper: 1
   canShoot: 1
-  canExtendCamera: 0
 --- !u!4 &750640548
 Transform:
   m_ObjectHideFlags: 0
@@ -1312,7 +1312,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1212554941
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1329,7 +1329,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1295968627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,7 +2119,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
