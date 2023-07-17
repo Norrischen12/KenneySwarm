@@ -5,7 +5,6 @@ using UnityEngine;
 public class Gun : RangeWeapon
 {
     public GameObject bulletPrefab;
-    public bool canShoot = true;
     
 
     // Start is called before the first frame update
