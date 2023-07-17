@@ -5,19 +5,9 @@ using UnityEngine;
 
 public class SniperWeapon : RangeWeapon
 {
-    public GameObject sniperPrefab;
-    public float attk;
-    public float speed;
-    public float fireRate;
-    private void Start()
+    public override void Fire(GameObject firePoint, GameObject aim)
     {
-        weaponAtt = attk;
-        bulletSpeed = speed;
-        weaponAttSpeed = fireRate;
-    }
-    public override void Fire(GameObject bulletPoint, GameObject aim)
-    {
-        GameObject sniper = Instantiate(sniperPrefab, bulletPoint.transform.position, Quaternion.identity);
+        GameObject sniper = Instantiate(bulletPrefab, firePoint.transform.position, Quaternion.identity);
         Vector3 direction = aim.transform.position - sniper.transform.position;
         sniper.GetComponent<Sniper>().setDirection(direction);
         sniper.GetComponent<Sniper>().setBulletAtt(weaponAtt);

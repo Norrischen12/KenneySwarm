@@ -4,21 +4,9 @@ using UnityEngine;
 
 public class BoomerangWeapon : RangeWeapon
 {
-    public GameObject boomerangPrefab;
-    public float attk;
-    public float speed;
-    public float fireRate;
-
-    private void Start()
+    public override void Fire(GameObject firePoint, GameObject aim)
     {
-        weaponAtt = attk;
-        bulletSpeed = speed;
-        weaponAttSpeed = fireRate;
-    }
-
-    public override void Fire(GameObject bulletPoint, GameObject aim)
-    {
-        GameObject boomerang = Instantiate(boomerangPrefab, bulletPoint.transform.position, Quaternion.identity);
+        GameObject boomerang = Instantiate(bulletPrefab, firePoint.transform.position, Quaternion.identity);
         Vector3 direction = aim.transform.position - boomerang.transform.position;
         boomerang.GetComponent<Boomerang>().setDirection(direction);
         boomerang.GetComponent<Boomerang>().setBulletAtt(weaponAtt);

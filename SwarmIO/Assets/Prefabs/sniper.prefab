@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2512305584269171716}
   - component: {fileID: 2814630264661726214}
   - component: {fileID: 2229337635005625169}
+  - component: {fileID: 3781583861203548687}
   m_Layer: 6
   m_Name: sniper
   m_TagString: Sniper
@@ -131,8 +132,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5245504383197012917}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a84714bf73174b45bb6dbb6c9e7e0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3781583861203548687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245504383197012917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d10d992b15b0406898de13187ca7a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class Boomerang : MonoBehaviour
 {
-    private GameObject player;
     private Rigidbody2D rb;
     private Vector3 direction;
     private float speed;
     private float bulletAtt;
-    public bool canReturnBoomerang;
+    private GameObject currentWeapon;
 
+    public bool canReturnBoomerang;
     public float flyTime;
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        
         rb = this.GetComponent<Rigidbody2D>();
         rb.AddForce(direction * speed, ForceMode2D.Impulse);
-        player.GetComponent<PlayerController>().canShoot = false;
+        currentWeapon.GetComponent<RangedWeapon2>().canShoot = false;
         StartCoroutine(flyTimeCounting());
     }
     private IEnumerator flyTimeCounting()
@@ -47,13 +47,13 @@ public class Boomerang : MonoBehaviour
     private void returnBoomerang()
     {
 
-        Vector2 returnDirection = (player.transform.position - transform.position).normalized;
+        Vector2 returnDirection = (currentWeapon.transform.position - transform.position).normalized;
         //rb.AddForce(returnDirection * speed, ForceMode2D.Impulse);
         rb.velocity = returnDirection * speed;
-        if (Vector3.Distance(transform.position, player.transform.position) < 0.4f)
+        if (Vector3.Distance(transform.position, currentWeapon.transform.position) < 0.4f)
         {
             canReturnBoomerang = false;
-            player.GetComponent<PlayerController>().canShoot = true;
+            currentWeapon.GetComponent<RangedWeapon2>().canShoot = true;
             Destroy(gameObject);
         }
     }
@@ -91,5 +91,9 @@ public class Boomerang : MonoBehaviour
     public void setDirection(Vector3 direction)
     {
         this.direction = direction;
+    }
+    public void setWeapon(GameObject weapon)
+    {
+        currentWeapon = weapon;
     }
 }

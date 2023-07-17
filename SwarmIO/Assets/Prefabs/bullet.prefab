@@ -96,14 +96,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5245504383197012917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6a4efe3dfe24e89847c94d6280ae62, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d10d992b15b0406898de13187ca7a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: 0
-  bounce: 1
-  maxBounce: 2
-  pierce: 0
-  statikkShiv: 0
 --- !u!70 &3061568650725731960
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

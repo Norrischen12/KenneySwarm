@@ -32,6 +32,7 @@ public class PlayerController : Entity
     public bool Sniper;
     public bool canShoot = true;
 
+    private GameObject currentWeapon;
     private Animator animator;
     private Animator cameraAnimator;
     private bool canDash;
@@ -42,6 +43,7 @@ public class PlayerController : Entity
     }
     private void Start()
     {
+        GetCurrentWeapon();
         animator = player.GetComponent<Animator>();
         cameraAnimator = Camera.main.GetComponent<Animator>();
         movementSpeed = moveSpeed;
@@ -55,24 +57,16 @@ public class PlayerController : Entity
         StartCoroutine(ActivateIframe());
         CameraExtension();
         CheckCanDash();
-        if (canShoot && Gun && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            GunFire();
-            StartCoroutine(ShootCD(bulletAttkSpeed));
+            RangedWeapon2 rw = currentWeapon.GetComponent<RangedWeapon2>();
+            rw.Fire();
         }
-        else if (canShoot && Boomerang && Input.GetMouseButtonDown(0))
-        {
-            BoomerangFire();
-        }
-        else if (canShoot && Sniper && Input.GetMouseButtonDown(0))
-        {
-            SniperFire();
-            StartCoroutine(ShootCD(sniperAttkSpeed));
-        }
-        if (canDash && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            StartCoroutine(PlayerDash());
-        }
+    }
+    private void GetCurrentWeapon()
+    {
+        currentWeapon = rangeWeapon.transform.GetChild(0).gameObject;
+        Debug.Log("Current Weapon is: " + currentWeapon.name);
     }
     private void PlayerMovement()
     {
@@ -115,6 +109,7 @@ public class PlayerController : Entity
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rangeWeapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+    /*
     private void GunFire()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletPoint.transform.position, Quaternion.identity);
@@ -140,6 +135,7 @@ public class PlayerController : Entity
         sniper.GetComponent<Sniper>().setBulletAtt(sniperAttk);
         sniper.GetComponent<Sniper>().setSpeed(sniperSpeed);
     }
+    */
 
     private void CameraExtension ()
     {
