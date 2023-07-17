@@ -6,15 +6,15 @@ public class Enemies : Entity
 {
     //Attribute
     public Transform player;
-    public int damage;
-    private int originalHP;
+    public float damage;
+    private float originalHP;
     private GameObject HPPivot_obj;
     private float HPScaleX;
 
 
 
     //Constructor
-    public Enemies(int health, int movementSpeed, int damage) : base(health, movementSpeed)
+    public Enemies(float health, float movementSpeed, float damage) : base(health, movementSpeed)
     {
         this.damage = damage;
     }
@@ -61,16 +61,16 @@ public class Enemies : Entity
 
 
     //Getters and Setters
-    public int getDamage()
+    public float getDamage()
     {
         return this.damage;
     }
 
-    public void setDamage(int damage)
+    public void setDamage(float damage)
     {
         this.damage = damage;
     }
-    public void setOriginalHP(int HP)
+    public void setOriginalHP(float HP)
     {
         originalHP = HP;
         HPScaleX = calculateHPPivot();

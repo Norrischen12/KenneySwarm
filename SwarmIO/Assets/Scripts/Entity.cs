@@ -5,12 +5,12 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     //Attributes
-    protected int health;
-    protected float movementSpeed;
+    public float health;
+    public float movementSpeed;
 
 
     //Constructor
-    public Entity(int health, float movementSpeed)
+    public Entity(float health, float movementSpeed)
     {
         this.health = health;
         this.movementSpeed = movementSpeed;
@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
 
 
     //Methods
-    public virtual void damaged(int attPower)
+    public virtual void damaged(float attPower)
     {
         this.health -= attPower;
         if (this.health <= 0){
@@ -35,12 +35,12 @@ public class Entity : MonoBehaviour
 
 
     //Getters and Setters
-    public int getHealth()
+    public float getHealth()
     {
         return this.health;
     }
 
-    public void setHealth(int health)
+    public void setHealth(float health)
     {
         this.health = health;
     }

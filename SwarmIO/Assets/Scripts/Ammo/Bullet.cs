@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     //Attributes
     private float speed;
     private Vector3 direction;
-    private int bulletAtt;
+    private float bulletAtt;
     private Rigidbody2D rb;
 
 
@@ -31,9 +31,6 @@ public class Bullet : MonoBehaviour
 
 
 
-
-
-
     //Getters Setters
     public float getSpeed()
     {
@@ -45,12 +42,12 @@ public class Bullet : MonoBehaviour
         this.speed = speed;
     }
 
-    public int getBulletAtt()
+    public float getBulletAtt()
     {
         return this.bulletAtt;
     }
 
-    public void setBulletAtt(int bulletAtt)
+    public void setBulletAtt(float bulletAtt)
     {
         this.bulletAtt = bulletAtt;
     }
