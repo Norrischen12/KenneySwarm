@@ -2,21 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeWeapon : Weapons
+public abstract class RangeWeapon : MonoBehaviour
 {
-    public RangeWeapon(int durability) : base(durability)
-    {
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float weaponAtt;
+    public float bulletSpeed;
+    public float weaponAttSpeed;
+    public abstract void Fire();
 }
