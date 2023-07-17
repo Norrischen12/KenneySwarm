@@ -7,5 +7,5 @@ public abstract class RangeWeapon : MonoBehaviour
     public float weaponAtt;
     public float bulletSpeed;
     public float weaponAttSpeed;
-    public abstract void Fire();
+    public abstract void Fire(GameObject bulletPoint, GameObject aim);
 }
