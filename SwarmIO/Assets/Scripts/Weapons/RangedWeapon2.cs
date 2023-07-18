@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class RangedWeapon2 : MonoBehaviour
@@ -7,6 +8,7 @@ public class RangedWeapon2 : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject firePoint;
     public GameObject aim;
+    public GameObject f;
     public float weaponAtt;
     public float bulletSpeed;
     public float weaponAttSpeed;
@@ -18,6 +20,11 @@ public class RangedWeapon2 : MonoBehaviour
     }
     public BulletType bulletType;
 
+    private PlayerController pc;
+    private void Start()
+    {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
 
     private void Update()
@@ -60,5 +67,32 @@ public class RangedWeapon2 : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(weaponAttSpeed);
         canShoot = true;
+    }
+
+    //pick up weapon
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (this.gameObject.layer == LayerMask.NameToLayer("PickUp") && collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
+        {
+            bool hasWeapon = pc.CheckCurrentWeapon();
+            if (hasWeapon)
+            {
+                //drop the current weapon and substitue
+                GameObject curr = pc.GetCurrentWeapon();
+                curr.transform.SetParent(null);
+                Destroy(curr);
+                pc.hasGun = false;
+            } 
+
+            //pick up weapon
+            GameObject child = collision.transform.Find("RangeWeapon").gameObject;
+            this.transform.SetParent(child.transform, false);
+            this.transform.localPosition = new Vector3(1, 0, 0);
+            aim.SetActive(true);
+            f.SetActive(false);
+            pc.hasGun = true;
+            pc.GetCurrentWeapon();
+            this.gameObject.layer = LayerMask.NameToLayer("Weapon");
+        }
     }
 }

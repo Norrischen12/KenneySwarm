@@ -6,12 +6,6 @@ public class PlayerController : Entity
     [Header("Reference")]
     public GameObject player;
     public GameObject rangeWeapon;
-    public GameObject bulletPrefab;
-    public GameObject bulletPoint;
-    public GameObject aim;
-    public GameObject gun;
-    public GameObject boomerangPrefab;
-    public GameObject sniperPrefab;
     public UIManager uiManager;
     [Header("Status")]
     public float bulletAttkSpeed;
@@ -25,17 +19,17 @@ public class PlayerController : Entity
     public float sniperSpeed;
     public int HP;
     public int MN;
+    public bool hasGun;
     [Header("Abilities")]
     public bool IFrame;
-    public bool Gun;
-    public bool Boomerang;
-    public bool Sniper;
-    public bool canShoot = true;
+    public bool canCameraExtension;
+    
 
     private GameObject currentWeapon;
     private Animator animator;
     private Animator cameraAnimator;
     private bool canDash;
+    
     
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
     {
@@ -43,7 +37,7 @@ public class PlayerController : Entity
     }
     private void Start()
     {
-        GetCurrentWeapon();
+        //GetCurrentWeapon();
         animator = player.GetComponent<Animator>();
         cameraAnimator = Camera.main.GetComponent<Animator>();
         movementSpeed = moveSpeed;
@@ -55,18 +49,39 @@ public class PlayerController : Entity
         RangeWeaponAim();
         UpdateHP();
         StartCoroutine(ActivateIframe());
-        CameraExtension();
         CheckCanDash();
-        if (Input.GetMouseButtonDown(0))
+        if (hasGun && Input.GetMouseButtonDown(0))
         {
             RangedWeapon2 rw = currentWeapon.GetComponent<RangedWeapon2>();
             rw.Fire();
         }
     }
-    private void GetCurrentWeapon()
+    public bool CheckCurrentWeapon()
+    {
+        if (rangeWeapon.transform.childCount == 0)
+        {
+            return false;
+        }
+        else
+        {
+            hasGun = true;
+            return true;
+        }
+    }
+    public GameObject GetCurrentWeapon()
     {
         currentWeapon = rangeWeapon.transform.GetChild(0).gameObject;
         Debug.Log("Current Weapon is: " + currentWeapon.name);
+        if (currentWeapon.gameObject.name == "SniperWeapon")
+        {
+            canCameraExtension = true;
+            CameraExtension();
+        } else
+        {
+            canCameraExtension = false;
+            CameraExtension();
+        }
+        return currentWeapon;
     }
     private void PlayerMovement()
     {
@@ -109,45 +124,6 @@ public class PlayerController : Entity
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rangeWeapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-    /*
-    private void GunFire()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, bulletPoint.transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().setBulletAtt(bulletAttk);
-        bullet.GetComponent<Bullet>().setSpeed(bulletSpeed);
-        Vector3 direction = aim.transform.position - bulletPoint.transform.position;
-        bullet.GetComponent<Bullet>().setDirection(direction);
-    }
-    private void BoomerangFire()
-    {
-        GameObject boomerang = Instantiate(boomerangPrefab, bulletPoint.transform.position, Quaternion.identity);
-        Vector3 direction = aim.transform.position - boomerang.transform.position;
-        boomerang.GetComponent<Boomerang>().setDirection(direction);
-        boomerang.GetComponent<Boomerang>().setBulletAtt(boomerangAttk);
-        boomerang.GetComponent<Boomerang>().setSpeed(boomerangSpeed);
-        boomerang.layer = LayerMask.NameToLayer("Boomerang");
-    }
-    private void SniperFire()
-    {
-        GameObject sniper = Instantiate(sniperPrefab, bulletPoint.transform.position, Quaternion.identity);
-        Vector3 direction = aim.transform.position - sniper.transform.position;
-        sniper.GetComponent<Sniper>().setDirection(direction);
-        sniper.GetComponent<Sniper>().setBulletAtt(sniperAttk);
-        sniper.GetComponent<Sniper>().setSpeed(sniperSpeed);
-    }
-    */
-
-    private void CameraExtension ()
-    {
-        if (Sniper)
-        {
-            cameraAnimator.SetBool("canExtendCamera", true);
-        }
-        else if (!Sniper)
-        {
-            cameraAnimator.SetBool("canExtendCamera", false);
-        }
-    }
     private void UpdateHP()
     {
         uiManager.setHP(getHealth());
@@ -159,30 +135,6 @@ public class PlayerController : Entity
             yield return new WaitForSeconds(0.5f);
             IFrame = false;
         }
-    }
-    private void ActivateGun()
-    {
-        Gun = true;
-        gun.SetActive(Gun);
-    }
-    private void DeactivateGun()
-    {
-        Gun = false;
-        gun.SetActive(Gun);
-    }
-    private void ActivateBoomerang()
-    {
-        Boomerang = true;
-    }
-    private void DeactivateBoomerang()
-    {
-        Boomerang = false;
-    }
-    private IEnumerator ShootCD(float time)
-    {
-        canShoot = false;
-        yield return new WaitForSeconds(time);
-        canShoot = true;
     }
     private IEnumerator PlayerDash()
     {
@@ -202,6 +154,17 @@ public class PlayerController : Entity
         else
         {
             canDash = false;
+        }
+    }
+    private void CameraExtension()
+    {
+        if (canCameraExtension)
+        {
+            cameraAnimator.SetBool("canExtendCamera", true);
+        }
+        else if (!canCameraExtension)
+        {
+            cameraAnimator.SetBool("canExtendCamera", false);
         }
     }
 }
