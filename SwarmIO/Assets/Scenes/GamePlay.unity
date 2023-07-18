@@ -665,6 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9042794937848e4b19c284c7c03538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawner1: {fileID: 0}
   enemies:
   - enemyPrefab: {fileID: 8820842034566934656, guid: b0bde9c7ce97d442abd8cc4ae26b80e8, type: 3}
     cost: 2
@@ -937,6 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9042794937848e4b19c284c7c03538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawner1: {fileID: 0}
   enemies:
   - enemyPrefab: {fileID: 8820842034566934656, guid: 94e16331effa54b5db65ef934a5855bc, type: 3}
     cost: 2
@@ -1162,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e53734312691c4aab8b40eab914d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   movementSpeed: 0
   expValue: 0
   Orb: {fileID: 5245504383197012917, guid: a74e90e55fe8944c5a69de3968ecf172, type: 3}
@@ -1184,12 +1186,12 @@ MonoBehaviour:
   sniperAttk: 10
   sniperAttkSpeed: 2
   sniperSpeed: 200
-  HP: 10
+  HP: 100
   MN: 0
   IFrame: 0
-  Gun: 1
+  Gun: 0
   Boomerang: 0
-  Sniper: 0
+  Sniper: 1
   canShoot: 1
 --- !u!4 &750640548
 Transform:
@@ -1279,6 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9042794937848e4b19c284c7c03538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawner1: {fileID: 934732265}
   enemies:
   - enemyPrefab: {fileID: 8820842034566934656, guid: fe5920698fe584ca2b1f9200b55ea37d, type: 3}
     cost: 2
@@ -1400,6 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9042794937848e4b19c284c7c03538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Spawner1: {fileID: 809055905}
   enemies:
   - enemyPrefab: {fileID: 8820842034566934656, guid: f4a5baf77f8ce411a99dbdf3aa3a6821, type: 3}
     cost: 1

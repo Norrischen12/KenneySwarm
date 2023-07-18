@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
+    public GameObject Spawner1;
     public List<Enemy> enemies = new List<Enemy>();
     public int currWave;
     public int waveValue;
@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
             waveTimer -= Time.fixedDeltaTime;
         }
 
-        if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
+        if (waveTimer <= 0 && spawnedEnemies.Count <= 0 && Spawner1.GetComponent<EnemySpawner>().spawnedEnemies.Count <= 0)
         {
             currWave++;
             GenerateWave();
