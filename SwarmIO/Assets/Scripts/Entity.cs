@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour
     //Attributes
     public float health;
     public float movementSpeed;
+    public int expValue;
+    public GameObject Orb;
 
 
     //Constructor
@@ -22,6 +24,8 @@ public class Entity : MonoBehaviour
     {
         this.health -= attPower;
         if (this.health <= 0){
+            GameObject expOrb = Instantiate(Orb, transform.position, Quaternion.identity);
+            expOrb.GetComponent<ExpOrb>().setExpValue(this.expValue);
             destroyObject();
         }
     }
