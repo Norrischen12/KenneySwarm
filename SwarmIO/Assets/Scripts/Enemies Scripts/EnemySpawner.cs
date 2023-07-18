@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public List<Enemy> enemies = new List<Enemy>();
     public int currWave;
-    private int waveValue;
+    public int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
 
     public Transform[] spawnLocation;
@@ -62,6 +62,14 @@ public class EnemySpawner : MonoBehaviour
         {
             currWave++;
             GenerateWave();
+        }
+
+        for (int x = spawnedEnemies.Count - 1; x >= 0; x--)
+        {
+            if (!spawnedEnemies[x])
+            {
+                spawnedEnemies.RemoveAt(x);
+            }
         }
     }
 

@@ -331,6 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9d1e2e029ae4126bba6377b9f90830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  movementSpeed: 0
+  expValue: 3
+  Orb: {fileID: 5245504383197012917, guid: a74e90e55fe8944c5a69de3968ecf172, type: 3}
   player: {fileID: 0}
   damage: 0
   ghostHealth: 8
