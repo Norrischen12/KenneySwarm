@@ -13,6 +13,8 @@ public class RangedWeapon2 : MonoBehaviour
     public float bulletSpeed;
     public float weaponAttSpeed;
     public bool canShoot = true;
+
+    private UIManager uiManager;
     public enum BulletType
     {
         bullet,
@@ -24,6 +26,7 @@ public class RangedWeapon2 : MonoBehaviour
     private void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
 
@@ -93,6 +96,7 @@ public class RangedWeapon2 : MonoBehaviour
             pc.hasGun = true;
             pc.GetCurrentWeapon();
             this.gameObject.layer = LayerMask.NameToLayer("Weapon");
+            uiManager.updatName();
         }
     }
 }

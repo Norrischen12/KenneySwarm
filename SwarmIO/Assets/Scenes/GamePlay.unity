@@ -631,7 +631,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &274000474
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -648,8 +648,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &279061528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,7 +1404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &809055906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,7 +1508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934732266
 Transform:
   m_ObjectHideFlags: 0
@@ -1649,7 +1648,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1212554941
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1666,8 +1665,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1263359555
 GameObject:
   m_ObjectHideFlags: 0
@@ -6651,7 +6649,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPPivot: {fileID: 851784140}
   MNPivot: {fileID: 0}
-  Player: {fileID: 0}
+  myTextMeshPro: {fileID: 1776266099}
+  player: {fileID: 750640547}
 --- !u!114 &1748117206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6796,7 +6795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Null
+  m_text: BoomerangWeapon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b29f23e0ff7914843ba8b849e6f2c804, type: 2}
   m_sharedMaterial: {fileID: -4973369986472498219, guid: b29f23e0ff7914843ba8b849e6f2c804, type: 2}
@@ -6859,7 +6858,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -75.42877, w: 0}
+  m_margin: {x: 0, y: 0, z: -830.92896, w: -56.54944}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
