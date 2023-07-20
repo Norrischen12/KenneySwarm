@@ -55,6 +55,10 @@ public class PlayerController : Entity
             RangedWeapon2 rw = currentWeapon.GetComponent<RangedWeapon2>();
             rw.Fire();
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log(GetCurrentWeaponName());
+        }
     }
     public bool CheckCurrentWeapon()
     {
@@ -82,6 +86,18 @@ public class PlayerController : Entity
             CameraExtension();
         }
         return currentWeapon;
+    }
+    public string GetCurrentWeaponName()
+    {
+        if (rangeWeapon.transform.childCount == 0)
+        {
+            return "None";
+        } 
+        else
+        {
+            GameObject curr = GetCurrentWeapon();
+            return curr.name;
+        }
     }
     private void PlayerMovement()
     {
