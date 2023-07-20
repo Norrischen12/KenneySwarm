@@ -142,7 +142,9 @@ public class PlayerController : Entity
     }
     private void UpdateHP()
     {
-        uiManager.setHP(getHealth());
+        float curr = getHealth();
+        float result = curr * 10 / 100;
+        uiManager.setHP(result);
     }
     private IEnumerator ActivateIframe()
     {
