@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class UIManager : MonoBehaviour
 {
     public RectTransform HPPivot;
     public RectTransform MNPivot;
-    public TextMeshProUGUI WeaponName;
+    public TMP_Text myTextMeshPro;
     public GameObject Player;
 
     public void setHP(float hpPoint)
@@ -22,9 +23,8 @@ public class UIManager : MonoBehaviour
         newMN.x = mn;
         MNPivot.localScale = newMN;
     }
-
-    public void updateWeaponName()
+    public void updatName()
     {
-        WeaponName.text = Player.GetComponent<PlayerController>().GetCurrentWeaponName();
+        myTextMeshPro.text = Player.GetComponent<PlayerController>().GetCurrentWeaponName();
     }
 }
