@@ -8,6 +8,7 @@ public class PlayerController : Entity
     public GameObject player;
     public GameObject rangeWeapon;
     public UIManager uiManager;
+    public GameObject gameOverBoard;
     [Header("Status")]
     public float bulletAttkSpeed;
     public float moveSpeed;
@@ -31,6 +32,7 @@ public class PlayerController : Entity
     private Animator cameraAnimator;
     private bool canDash;
     private int currentKey = 0;
+    private bool isGameOver = false;
     
     
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
@@ -39,6 +41,7 @@ public class PlayerController : Entity
     }
     private void Start()
     {
+        isGameOver = false;
         //GetCurrentWeapon();
         animator = player.GetComponent<Animator>();
         cameraAnimator = Camera.main.GetComponent<Animator>();
@@ -47,7 +50,10 @@ public class PlayerController : Entity
     }
     void Update()
     {
-        PlayerMovement();
+        if (!isGameOver)
+        {
+            PlayerMovement();
+        }
         RangeWeaponAim();
         UpdateHP();
         StartCoroutine(ActivateIframe());
@@ -57,6 +63,7 @@ public class PlayerController : Entity
             RangedWeapon2 rw = currentWeapon.GetComponent<RangedWeapon2>();
             rw.Fire();
         }
+        CheckGameOver();
     }
     public bool CheckCurrentWeapon()
     {
@@ -148,7 +155,7 @@ public class PlayerController : Entity
     {
         if (IFrame)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             IFrame = false;
         }
     }
@@ -187,5 +194,13 @@ public class PlayerController : Entity
     {
         currentKey++;
         uiManager.updateKey(currentKey);
+    }
+    private void CheckGameOver()
+    {
+        if (getHealth() <= 0)
+        {
+            isGameOver = true;
+            gameOverBoard.SetActive(true);
+        }
     }
 }

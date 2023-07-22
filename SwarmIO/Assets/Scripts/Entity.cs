@@ -32,7 +32,11 @@ public class Entity : MonoBehaviour
 
     public void destroyObject()
     {
-        Destroy(gameObject);
+        if (this.gameObject.transform.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
 
