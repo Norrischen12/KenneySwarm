@@ -5,6 +5,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject Spawner1;
+    public GameObject sniperPrefab;
+    public bool sniperSpawned = false;
+    public GameObject boomerangPrefab;
+    public bool boomerangSpawned = false;
+    public Transform spawnPosition;
+
+
+
     public List<Enemy> enemies = new List<Enemy>();
     public int currWave;
     public int waveValue;
@@ -28,6 +36,16 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (currWave == 2 && !sniperSpawned)
+        {
+            GameObject SniperWeapon = Instantiate(sniperPrefab, spawnPosition.position, spawnPosition.rotation);
+            sniperSpawned = true;
+        }
+        if (currWave == 3 && !boomerangSpawned)
+        {
+            GameObject BoomerangWeapon = Instantiate(boomerangPrefab, spawnPosition.position, spawnPosition.rotation);
+            boomerangSpawned = true;
+        }
         if (spawnTimer <= 0)
         {
             //spawn an enemy
