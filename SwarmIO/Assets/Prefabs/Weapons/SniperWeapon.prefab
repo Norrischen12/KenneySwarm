@@ -227,7 +227,7 @@ MonoBehaviour:
   bulletSpeed: 15
   weaponAttSpeed: 2
   canShoot: 1
-  bulletType: 0
+  bulletType: 2
 --- !u!61 &8964823393808440941
 BoxCollider2D:
   m_ObjectHideFlags: 0

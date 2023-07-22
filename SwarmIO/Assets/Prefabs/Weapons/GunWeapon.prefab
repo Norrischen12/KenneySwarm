@@ -384,7 +384,7 @@ MonoBehaviour:
   f: {fileID: 484386657839417459}
   weaponAtt: 1
   bulletSpeed: 5
-  weaponAttSpeed: 0.1
+  weaponAttSpeed: 0.2
   canShoot: 1
   bulletType: 0
 --- !u!61 &-5730089371656235736

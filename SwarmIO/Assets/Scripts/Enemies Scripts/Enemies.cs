@@ -23,7 +23,7 @@ public class Enemies : Entity
     {
         if (collision.gameObject.CompareTag("Sniper"))
         {
-            Sniper curr = collision.gameObject.GetComponent<Sniper>();
+            Bullet curr = collision.gameObject.GetComponent<Bullet>();
             this.damaged(curr.getBulletAtt());
             HPScaleX = calculateHPPivot();
         }

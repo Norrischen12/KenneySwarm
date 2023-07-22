@@ -14,12 +14,16 @@ public class RangedWeapon2 : MonoBehaviour
     public float weaponAttSpeed;
     public bool canShoot = true;
 
-    private GameObject fireAudio;
+    private GameObject pistolFireAudio;
+    private GameObject boomerangFireAuido;
+    private GameObject sniperFireAuido;
     private UIManager uiManager;
+
     public enum BulletType
     {
         bullet,
         boomerang,
+        sniper,
     }
     public BulletType bulletType;
 
@@ -28,7 +32,9 @@ public class RangedWeapon2 : MonoBehaviour
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-        fireAudio = GameObject.Find("Fire_audio");
+        pistolFireAudio = GameObject.Find("Fire_audio");
+        boomerangFireAuido = GameObject.Find("BoomerangAudio");
+        sniperFireAuido = GameObject.Find("SniperAudio");
     }
 
 
@@ -42,11 +48,14 @@ public class RangedWeapon2 : MonoBehaviour
             case BulletType.boomerang:
                 bulletType = BulletType.boomerang;
                 break;
+            case BulletType.sniper:
+                bulletType = BulletType.sniper;
+                break;
         }
     }
     public void Fire()
     {
-        if (bulletType == BulletType.bullet && canShoot)
+        if ((bulletType == BulletType.bullet || bulletType == BulletType.sniper) && canShoot)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.transform.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().setBulletAtt(this.weaponAtt);
@@ -54,6 +63,15 @@ public class RangedWeapon2 : MonoBehaviour
             Vector3 direction = aim.transform.position - firePoint.transform.position;
             bullet.GetComponent<Bullet>().setDirection(direction);
             StartCoroutine(shootCD());
+            if (bulletType == BulletType.bullet)
+            {
+                GunFireAudio();
+            }
+            else if (bulletType == BulletType.sniper)
+            {
+                SniperAuido();
+            }
+            
         }
         else if (bulletType == BulletType.boomerang && canShoot)
         {
@@ -64,6 +82,7 @@ public class RangedWeapon2 : MonoBehaviour
             boomerang.GetComponent<Boomerang>().setBulletAtt(this.weaponAtt);
             boomerang.GetComponent<Boomerang>().setSpeed(bulletSpeed);
             boomerang.layer = LayerMask.NameToLayer("Boomerang");
+            BoomerangAuido();
         }
 
     }
@@ -100,5 +119,17 @@ public class RangedWeapon2 : MonoBehaviour
             this.gameObject.layer = LayerMask.NameToLayer("Weapon");
             uiManager.updatName();
         }
+    }
+    private void GunFireAudio()
+    {
+        pistolFireAudio.GetComponent<AudioSource>().Play();
+    }
+    private void BoomerangAuido()
+    {
+        boomerangFireAuido.GetComponent<AudioSource>().Play();
+    }
+    private void SniperAuido()
+    {
+        sniperFireAuido.GetComponent<AudioSource>().Play();
     }
 }

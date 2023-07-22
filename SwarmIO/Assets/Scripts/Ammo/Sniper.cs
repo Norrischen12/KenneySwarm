@@ -12,6 +12,7 @@ public class Sniper : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(direction * speed * 5);
+        Destroy(gameObject, 1f);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

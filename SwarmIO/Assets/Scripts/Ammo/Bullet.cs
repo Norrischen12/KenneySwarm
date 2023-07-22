@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = direction * speed;
         //rb.AddForce(direction * speed * 5);
+        Destroy(gameObject, 1f);
     }
 
     //destroy bullet when hit obstacle or enemy
