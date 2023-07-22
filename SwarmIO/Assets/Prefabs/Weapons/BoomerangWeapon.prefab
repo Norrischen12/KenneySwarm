@@ -413,7 +413,7 @@ MonoBehaviour:
   firePoint: {fileID: 7399992050675597624}
   aim: {fileID: 1140082521825821120}
   f: {fileID: 557903189459916717}
-  weaponAtt: 2
+  weaponAtt: 5
   bulletSpeed: 30
   weaponAttSpeed: 1
   canShoot: 1

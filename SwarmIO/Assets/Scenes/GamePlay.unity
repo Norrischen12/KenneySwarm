@@ -24306,7 +24306,7 @@ MonoBehaviour:
   - {fileID: 1090328904}
   - {fileID: 2095309703}
   spawnIndex: 0
-  waveDuration: 5
+  waveDuration: 30
   spawnedEnemies: []
 --- !u!4 &809055907
 Transform:
@@ -73773,6 +73773,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 676615375, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 676615376, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5757
+      objectReference: {fileID: 0}
+    - target: {fileID: 676615376, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.67644745
+      objectReference: {fileID: 0}
+    - target: {fileID: 676615376, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5757
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394539163, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445847902509025044, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -73888,6 +73908,22 @@ PrefabInstance:
     - target: {fileID: 1445847903319201982, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -251
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735617464785860430, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.56688
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735617464785860430, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.67317
+      objectReference: {fileID: 0}
+    - target: {fileID: 3735617464785860430, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.56688
+      objectReference: {fileID: 0}
+    - target: {fileID: 7802203767196315159, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
