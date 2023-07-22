@@ -14,6 +14,7 @@ public class RangedWeapon2 : MonoBehaviour
     public float weaponAttSpeed;
     public bool canShoot = true;
 
+    private GameObject fireAudio;
     private UIManager uiManager;
     public enum BulletType
     {
@@ -27,6 +28,7 @@ public class RangedWeapon2 : MonoBehaviour
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        fireAudio = GameObject.Find("Fire_audio");
     }
 
 
