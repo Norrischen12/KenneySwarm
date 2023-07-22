@@ -24181,7 +24181,7 @@ MonoBehaviour:
   player: {fileID: 274000471}
   rangeWeapon: {fileID: 1385483754}
   uiManager: {fileID: 646708141}
-  gameOverBoard: {fileID: 0}
+  gameOverBoard: {fileID: 945749660}
   bulletAttkSpeed: 0.2
   moveSpeed: 3
   bulletAttk: 1
@@ -27590,6 +27590,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &945749660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 676615375, guid: c22ee1785fba2ae4bb766037ca1ec85c, type: 3}
+  m_PrefabInstance: {fileID: 1951273538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976426076 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9105374368068743016, guid: 0062359ffea90a94da165e015710569b, type: 3}
