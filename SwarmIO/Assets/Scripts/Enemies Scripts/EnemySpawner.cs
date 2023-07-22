@@ -36,16 +36,16 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (currWave == 2 && !sniperSpawned)
-        {
-            GameObject SniperWeapon = Instantiate(sniperPrefab, spawnPosition.position, spawnPosition.rotation);
-            sniperSpawned = true;
-        }
-        if (currWave == 3 && !boomerangSpawned)
-        {
-            GameObject BoomerangWeapon = Instantiate(boomerangPrefab, spawnPosition.position, spawnPosition.rotation);
-            boomerangSpawned = true;
-        }
+        //if (currWave == 2 && !sniperSpawned)
+        //{
+        //    GameObject SniperWeapon = Instantiate(sniperPrefab, spawnPosition.position, spawnPosition.rotation);
+        //    sniperSpawned = true;
+        //}
+        //if (currWave == 3 && !boomerangSpawned)
+        //{
+        //    GameObject BoomerangWeapon = Instantiate(boomerangPrefab, spawnPosition.position, spawnPosition.rotation);
+        //    boomerangSpawned = true;
+        //}
         if (spawnTimer <= 0)
         {
             //spawn an enemy
