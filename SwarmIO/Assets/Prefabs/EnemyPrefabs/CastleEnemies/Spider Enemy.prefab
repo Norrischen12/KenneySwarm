@@ -300,8 +300,8 @@ MonoBehaviour:
   Orb: {fileID: 5245504383197012917, guid: a74e90e55fe8944c5a69de3968ecf172, type: 3}
   player: {fileID: 0}
   damage: 0
-  barnacleHealth: 10
-  barnacleDamage: 3
+  barnacleHealth: 20
+  barnacleDamage: 10
   barnacleMovementSpeed: 1
   HPPivot: {fileID: 8233985207594855825}
 --- !u!50 &8820842034566934663
@@ -338,6 +338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 400
+  speed: 350
   nextWaypointDistance: 2
   enemyGFX: {fileID: 8820842033112350007}

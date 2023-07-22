@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 400
+  speed: 250
   nextWaypointDistance: 2
   enemyGFX: {fileID: 8820842033112350007}
 --- !u!114 &7143333169657186355
@@ -337,7 +337,7 @@ MonoBehaviour:
   Orb: {fileID: 5245504383197012917, guid: a74e90e55fe8944c5a69de3968ecf172, type: 3}
   player: {fileID: 0}
   damage: 0
-  ghostHealth: 8
-  ghostDamage: 0
+  ghostHealth: 30
+  ghostDamage: 25
   ghostMovementSpeed: 1
   HPPivot: {fileID: 1222011073722434819}
