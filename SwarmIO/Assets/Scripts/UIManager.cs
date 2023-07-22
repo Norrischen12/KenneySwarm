@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public RectTransform MNPivot;
     public TMP_Text myTextMeshPro;
     public PlayerController player;
+    public TMP_Text key_Text;
 
     public void setHP(float hpPoint)
     {
@@ -40,5 +41,9 @@ public class UIManager : MonoBehaviour
             text = "Rifle";
         }
         myTextMeshPro.text = text;
+    }
+    public void updateKey(int keyNum)
+    {
+        key_Text.text = keyNum.ToString();
     }
 }

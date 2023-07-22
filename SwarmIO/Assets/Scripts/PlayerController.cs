@@ -30,6 +30,7 @@ public class PlayerController : Entity
     private Animator animator;
     private Animator cameraAnimator;
     private bool canDash;
+    private int currentKey = 0;
     
     
     public PlayerController(int health, int movementSpeed) : base(health, movementSpeed)
@@ -55,10 +56,6 @@ public class PlayerController : Entity
         {
             RangedWeapon2 rw = currentWeapon.GetComponent<RangedWeapon2>();
             rw.Fire();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log(GetCurrentWeaponName());
         }
     }
     public bool CheckCurrentWeapon()
@@ -185,5 +182,10 @@ public class PlayerController : Entity
         {
             cameraAnimator.SetBool("canExtendCamera", false);
         }
+    }
+    public void pickUpKey()
+    {
+        currentKey++;
+        uiManager.updateKey(currentKey);
     }
 }
