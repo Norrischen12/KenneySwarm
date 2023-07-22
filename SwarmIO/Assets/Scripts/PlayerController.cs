@@ -203,4 +203,12 @@ public class PlayerController : Entity
             gameOverBoard.SetActive(true);
         }
     }
+    public int GetCurrentMushroom()
+    {
+        return currentKey;
+    }
+    public void SetGameOver(bool value)
+    {
+        isGameOver = value;
+    }
 }
