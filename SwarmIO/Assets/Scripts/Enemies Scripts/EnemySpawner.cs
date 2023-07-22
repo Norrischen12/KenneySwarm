@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void GenerateWave()
     {
-        waveValue = 10;
+        waveValue = 15;
         GenerateEnemies();
 
         spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies
